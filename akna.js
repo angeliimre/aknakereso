@@ -18,8 +18,9 @@ class kocka{
     }
     felfed=function(){
         if(this.akna==true){
-            if(this.felfedve==false)
+            if(this.felfedve==false){
                 alert("akna :(")
+            }
             this.szoveg="a";
         }
         else{
@@ -60,9 +61,9 @@ function aknapakolo(){
                 }
             }
         }
-        document.getElementById('btn').addEventListener('click',function(){
+        /*document.getElementById('btn').addEventListener('click',function(){
             alert("Hello!");
-        })
+        })*/
         
     }
 }
@@ -80,7 +81,7 @@ function palyanvane(i,j){
 }
 palyagenerator();
 aknapakolo();
-//tomb[2][3].felfed();
+
 document.querySelectorAll("button").forEach(element => {
     element.addEventListener('click',function(){
         let x=parseInt(element.dataset.x);
@@ -90,10 +91,7 @@ document.querySelectorAll("button").forEach(element => {
             if(palya[x][y].szomszedszam==0&&palya[x][y].felfedve==false&&palya[x][y].akna==false){
                 palya[x][y].felfed();
                 document.querySelector(".k"+x+""+y).style.backgroundColor="green";
-               /* for(i=-1;i<2;i++){
-                    for(j=-1;j<2;j++){*/
-                        /*let x2=x+i;
-                        let y2=y+j;*/
+               
                         if(palyanvane(x-1,y-1)==true&&palya[x-1][y-1].szomszedszam>0){
                             document.querySelector(".k"+(x-1)+""+(y-1)).style.backgroundColor="blue";
                             document.querySelector(".k"+(x-1)+""+(y-1)).innerText=palya[x-1][y-1].szomszedszam;
@@ -126,17 +124,7 @@ document.querySelectorAll("button").forEach(element => {
                             document.querySelector(".k"+(x+1)+""+(y+1)).style.backgroundColor="blue";
                             document.querySelector(".k"+(x+1)+""+(y+1)).innerText=palya[x+1][y+1].szomszedszam;
                         }
-                   /* }
-                }*/
-                /*for(i=-1;i<2;i++){
-                    for(j=-1;j<2;j++){
-                        let x2=x+i;
-                        let y2=y+j;
-                        if(palyanvane(x2,y2)==true){
-                            felfedes(x2,y2);
-                        }
-                    }
-                }*/
+
                 if(palyanvane(x-1,y-1)==true){
                     felfedes(x-1,y-1);
                 }
@@ -174,6 +162,7 @@ document.querySelectorAll("button").forEach(element => {
         }
         else if(palya[x][y].felfedve==false&&palya[x][y].akna==true){
             document.querySelector(".k"+x+""+y).style.backgroundColor="red";
+            alert("akna :(")
         }
     });
 });
